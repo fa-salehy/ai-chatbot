@@ -113,6 +113,7 @@ def handle_userinput(user_question):
 def main():
     load_dotenv()
     raw_text = get_csv_text()
+    print("############", raw_text , "###########")
     text_chunks = get_text_chunks(raw_text)
     vectorstore = get_vectorstore(text_chunks)
     st.session_state.conversation = get_conversation_chain(vectorstore)
