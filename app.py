@@ -38,7 +38,7 @@ os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 def get_csv_text():
     text = ""
-    loader = CSVLoader('./content/4.csv', encoding='utf-8')
+    loader = CSVLoader('./content/dataset-1.csv', encoding='utf-8')
     for row in loader.load():
         page_content = row.page_content  # Access the page_content attribute
         text += page_content + "\n"
