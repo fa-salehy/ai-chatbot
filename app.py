@@ -15,15 +15,15 @@ import logging
 
 
 # Initialize logging with the specified configuration
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(filename='./log/log.log'),
-        logging.StreamHandler(),
-    ],
-)
-LOGGER = logging.getLogger(__name__)
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format="%(asctime)s - %(levelname)s - %(message)s",
+#     handlers=[
+#         logging.FileHandler(filename='./log/log.log'),
+#         logging.StreamHandler(),
+#     ],
+# )
+# LOGGER = logging.getLogger(__name__)
 # def get_pdf_text(pdf_docs):
 #     text = ""
 #     for pdf in pdf_docs:
@@ -34,7 +34,7 @@ LOGGER = logging.getLogger(__name__)
 # Route for uploading CSV files
 
 
-
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 def get_csv_text():
     text = ""
@@ -104,7 +104,7 @@ def handle_userinput(user_question):
         if i % 2 == 0:
             st.write(user_template.replace(
                 "{{MSG}}", message.content), unsafe_allow_html=True)
-            LOGGER.info(f"user asked: {user_question}.")
+            # LOGGER.info(f"user asked: {user_question}.")
         else:
             st.write(bot_template.replace(
                 "{{MSG}}", message.content), unsafe_allow_html=True)
